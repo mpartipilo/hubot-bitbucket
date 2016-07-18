@@ -24,9 +24,9 @@ module.exports = (robot) ->
   # up elsewhere
   robot.router.post bitbucketPushUrl, (req, res) ->
 
-    push = push.parse req.body
+    data = JSON.parse req.body.payload
 
     robot.emit bitbucketPushEvent,
-      push: push
+      push: data 
 
     res.send 'OK'
